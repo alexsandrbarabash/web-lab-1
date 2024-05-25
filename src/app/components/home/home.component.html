@@ -1,0 +1,87 @@
+<div class="page home">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="page-title">
+                <img class="svg" src="assets/svg/todo.jpg">
+                <span>ToDo List App</span>
+              </h2>
+            </div>
+            <div class="col-md-6">
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Task name" #newTodo>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" type="submit" (click)="addTodo(newTodo)">Add</button>
+                  </form>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-12">
+                <mat-card class="card">
+                    <div cdkDropListGroup>
+                        <div class="example-container">
+                          <h5>TODO</h5>
+                          <div
+                            cdkDropList
+                            [cdkDropListData]="data['pendings']"
+                            class="example-list"
+                            (cdkDropListDropped)="drop($event)">
+                            <div class="example-box" *ngFor="let item of data['pendings']" cdkDrag>
+                                <img class="svg" src="assets/svg/clock.svg" alt="">
+                              <span class="todo-title">{{item.todo}}</span>
+                              <div class="button">
+                                <button mat-icon-button color="warn" (click)="removeTodo(item.id)" aria-label="Example icon-button with a heart icon">
+                                  <mat-icon>delete</mat-icon>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="example-container">
+                          <h5>In Progress</h5>
+                          <div
+                            cdkDropList
+                            [cdkDropListData]="data['inProgress']"
+                            class="example-list"
+                            (cdkDropListDropped)="drop($event)">
+                            <div class="example-box" *ngFor="let item of data['inProgress']" cdkDrag>
+                                <img class="svg" src="assets/svg/hourglass.svg" alt="">
+                              <span class="todo-title">{{item.todo}}</span>
+                              <div class="button">
+                                <button mat-icon-button color="warn" (click)="removeTodo(item.id)"  aria-label="Example icon-button with a heart icon">
+                                  <mat-icon>delete</mat-icon>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="example-container">
+                            <h5>Done</h5>
+                            <div
+                              cdkDropList
+                              [cdkDropListData]="data['done']"
+                              class="example-list"
+                              (cdkDropListDropped)="drop($event)">
+                              <div class="example-box" *ngFor="let item of data['done']" cdkDrag>
+                                  <img class="svg" src="assets/svg/okay.svg" alt="">
+                                  <span class="todo-title">{{item.todo}}</span>
+                                  <div class="button">
+                                    <button mat-icon-button color="warn" (click)="removeTodo(item.id)" aria-label="Example icon-button with a heart icon">
+                                      <mat-icon>delete</mat-icon>
+                                    </button>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                </mat-card>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center mt-2">
+              <small>Copyright 2024 Todo List App</small>
+          </div>
+        </div>
+      </div>
